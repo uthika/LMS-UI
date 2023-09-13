@@ -39,12 +39,38 @@
   "User Data": [
     {
       "User": "Valid"
-          }
+    }
   ],
   "Password Data": [
     {
-      
-    "Password": "Valid"
+      "Password": "Valid"
+    }
+  ],
+  "Valid Data": [
+    {
+      "Batch Id": "Valid",
+      "No of Classes": "Valid",
+      "Class Date": "Valid",
+      "Class Topic": "Valid",
+      "Staff Id": "Valid",
+      "Class Description": "Valid",
+      "Comments": "Valid",
+      "Notes": "Valid",
+      "Recording": "Valid"
+    }
+  ],
+  "Invalid Data": [
+    {
+      "Batch Id": "InValid",
+      "No of Classes": "InValid",
+      "Class Date": "InValid",
+      "Class Topic": "InValid",
+      "Staff Id": "InValid",
+      "Class Description": "InValid",
+      "Comments": "InValid",
+      "Notes": "InValid",
+      "Recording": "InValid"
     }
   ]
 }
+
