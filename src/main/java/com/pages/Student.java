@@ -228,17 +228,13 @@ public class Student {
 	    }
 	    return false; // Return false if "Rama" is not found
 	}
-}
 		
+	}
+	
+	
+	
+	
+	
 
-
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
