@@ -29,4 +29,4 @@ Feature: Title of your feature
   Scenario: Check if description field is optional in update
     Given Admin clicks the edit icon
     When Erase data from mandatory field
-    Then The updated batch details should appear on the data table
+    Then The updated batch details should appear on the data table

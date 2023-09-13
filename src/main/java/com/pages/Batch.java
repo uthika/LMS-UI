@@ -13,8 +13,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 
+import com.google.gson.JsonArray;
 import com.qa.util.ConfigReader;
+import com.qa.util.JSONReader;
 import com.qa.util.LoggerLoad;
+
+import io.cucumber.cienvironment.internal.com.eclipsesource.json.JsonObject;
 
 public class Batch  {
 	WebDriver driver;
@@ -22,6 +26,9 @@ public class Batch  {
     Properties prop = CR.init_prop();
     long endtime, starttime;
     String rowText;
+    JSONReader jsonreader = new JSONReader();
+    String filepath = prop.getProperty("TestdataPath");
+    //JsonObject jsondata = jsonreader.readJsonData(filepath);
 
 	
 	@FindBy(xpath="//a[text()='batch']")WebElement batch;
@@ -38,6 +45,18 @@ public class Batch  {
 	 @FindBy(xpath = "//header[text()='newbatch']]")WebElement newbatch;
 	 @FindBy(xpath="(//td[@name='table']")WebElement checkcheckbox;
 	 @FindBy(xpath="(//td[@name='table']")WebElement popupheading;
+	 @FindBy(id="name")WebElement popName;
+	 @FindBy(id="des")WebElement popDes;
+	 @FindBy(id="pname")WebElement popProName;
+	 @FindBy(id="active")WebElement popactive;
+	 @FindBy(id="inactive")WebElement popinactive;
+	 @FindBy(id="send")WebElement sendbutton;
+	 @FindBy(xpath="//table[@name='batchtable']")WebElement batchtable;
+	 @FindBy(xpath="//td[@name='editicon']")WebElement editicon;
+	
+	 @FindBy(id="del")WebElement del_manageprogram;
+	 List<WebElement> rowsAfter;
+	 List<WebElement> rowsBefore;
 	 
 	 @FindBy(xpath = "//table[@id='data-table']/tbody")WebElement Datatable;
 	  public void dashboard(){
@@ -206,7 +225,126 @@ public class Batch  {
 	
 	}
 	
+	public void clickNewBatch()
+	{
+		newbatch.click();
+	}
+	public void batchPopup()
+	{
+		 String popupwindow= driver.getWindowHandle();
+		
+	}
+	public void popupField()
+	{
+		WebElement[] arr= {popName,popDes,popProName,popactive,popinactive};
+		for(int i=0; i<=arr.length; i++)
+		{
+			boolean ispresent=arr[i].isDisplayed();
+			Assert.assertEquals(ispresent, true);
+		}
+	}
 	
-	
+	public void fillFields()
+	{
+		/*
+		 * JsonArray validDataArray = jsondata.getAsJsonArray("Valid Data"); JsonObject
+		 * AssigntName = validDataArray.get(0).getAsJsonObject();
+		 * popName.sendKeys(BatchData.get("batch Name").getAsString());
+		 * popDes.sendKeys(BatchData.get("batch des").getAsString());
+		 * popProName.sendKeys(BatchData.get("program name").getAsString());
+		 */
+		popactive.click();
+		sendbutton.click();
+		
+		
+	}
+	  public void validatebatchDetails() {
+	  }
+	  
+	  
+	  public void errorMessage() {
+	        Alert alert = driver.switchTo().alert();
+	        String errorMsg = alert.getText();
+	        Assert.assertEquals("Error message is displayed", errorMsg.contains("error message"));
+	    }
+	  
+	  public void AllValidData() {
+			/*
+			 * JsonArray validDataArray = jsondata.getAsJsonArray("Valid Data"); JsonObject
+			 * Assigntdetails = validDataArray.get(0).getAsJsonObject();
+			 * popName.sendKeys(Assigntdetails.get("Batch Name").getAsString());
+			 * popDes.sendKeys(Assigntdetails.get("Batch Description").getAsString());
+			 * popProName .sendKeys(Assigntdetails.get("programe name").getAsString());
+			 * popactive.click(); sendbutton.click();
+			 * 
+			 * 
+			 */
+	         }
+	  
+	  public void isCheckBoxSelected()
+	  {
+		 List<WebElement> checkbox= batchtable.findElements(By.className("checkbox"));
+		 for(WebElement e:checkbox)
+		 {
+			 
+		
+				Assert.assertEquals(false,e.isEnabled() );
+				}
+		  
+	  }
+	  public void Deleteicon_manageProgram()
+	  {
+		 
+		
+			 
+		
+				Assert.assertEquals("true",del_manageprogram.isDisplayed() );
+				
+		  
+	  }
+	  public void selectCheck()
+	  {
+		  WebElement checkbox= batchtable.findElement(By.xpath("(//td[@class='class'][1])"));
+			WebElement checkbox1= batchtable.findElement(By.xpath("(//td[@class='class'][2])"));
+		
+		  checkbox.click();
+		  checkbox1.click();
+	  }
+	  
+	  
+	  public void clickDelete_manageProgram()
+	  {
+		  del_manageprogram.click();
+	  }
+	   public void checkCheckboxDeleted()
+	   {
+		   WebElement checkbox= batchtable.findElement(By.xpath("(//td[@class='class'][1])"));
+			  Assert.assertEquals("flase",checkbox.isDisplayed());
+	   }
+	  
+	  
+	   public void checkenable()
+	   {
+		   WebElement checkbox= batchtable.findElement(By.xpath("(//td[@class='class'][1])"));
+			WebElement checkbox1= batchtable.findElement(By.xpath("(//td[@class='class'][2])"));
+			  Assert.assertEquals("true",checkbox.isSelected());
+			  Assert.assertEquals("true",checkbox1.isSelected());
+	   }
+	   public void editEnable()
+	   {
+		   Assert.assertEquals("true", editicon.isEnabled());
+	   }
+	   public void selectEditIcon()
+	   {
+		   editicon.click();
+	   }
+	   
+	   public void eraseDatafields()
+	   {
+		   popName.clear();
+	   }
+	  
+	  
+	  
 	
 }
