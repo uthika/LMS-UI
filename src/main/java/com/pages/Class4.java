@@ -7,6 +7,7 @@ import java.util.Set;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import com.google.gson.JsonArray;
@@ -14,14 +15,23 @@ import com.google.gson.JsonObject;
 
 import com.qa.factory.DriverFactory;
 import com.qa.util.ConfigReader;
+import com.qa.util.JSONReader;
 import com.qa.util.LoggerLoad;
 
 public class Class4 {
-	WebDriver driver;
-    ConfigReader CR = new ConfigReader();
+//	WebDriver driver;
+//    ConfigReader CR = new ConfigReader();
+//    Properties prop = CR.init_prop();
+//    JSONReader jsonreader = new JSONReader();
+//    String filepath = prop.getProperty("TestjsonPath");
+//    JsonObject jsondata = jsonreader.readJsonData(filepath);
+    
+	private WebDriver driver;
+	Actions actions = new Actions(driver);
+	ConfigReader CR = new ConfigReader();
     Properties prop = CR.init_prop();
-    JSONReader jsonreader = new JSONReader();
-    String filepath = prop.getProperty("TestjsonPath");
+	JSONReader jsonreader = new JSONReader();
+    String filepath = prop.getProperty("TestdataPath");
     JsonObject jsondata = jsonreader.readJsonData(filepath);
 
     public Class4() {

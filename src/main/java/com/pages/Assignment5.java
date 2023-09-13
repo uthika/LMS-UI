@@ -5,7 +5,7 @@ import com.qa.util.ConfigReader;
 import com.qa.util.LoggerLoad;
 import org.junit.Assert;
 import org.openqa.selenium.Alert;
-import org.testng.Assert;
+//import org.testng.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -63,7 +63,7 @@ public class Assignment5 {
     public void validateDeleteAlert(){
         Alert alert = driver.switchTo().alert();
         String alertmsg = alert.getText();
-        Assert.assertTrue(alertmsg.contains("delete"), "the delete alert is displayed");
+        Assert.assertTrue("the delete alert is displayed", alertmsg.contains("delete"));
 
     }
    public void acceptAlert() {

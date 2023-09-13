@@ -1,20 +1,25 @@
 package com.pages;
 
-
+import org.testng.Assert;
 import java.util.List;
 import java.util.Properties;
-import org.junit.Assert;
+//import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import com.google.gson.JsonObject;
 import com.qa.factory.DriverFactory;
 import com.qa.util.ConfigReader;
+import com.qa.util.JSONReader;
 import com.qa.util.LoggerLoad;
 
 public class Class1 
 {
+
 	    WebDriver driver;
 	    ConfigReader CR = new ConfigReader();
 	    Properties prop = CR.init_prop();
@@ -87,7 +92,7 @@ public class Class1
 	         public void manageURL()
 	         {
 	         String ClassURL = driver.getCurrentUrl();
-	         Assert.assertTrue("URL should contain Manage Class ", ClassURL.contains("Manage Class"));
+	         Assert.assertTrue(ClassURL.contains("Manage Class"), "URL should contain Manage Class ");
 	    }
 	        
 	        public void responseTime() 
@@ -134,7 +139,7 @@ public class Class1
 
              public void addNewClassButton()
              {
-            	 Assert.assertFalse("Button is displayed  ", addClassButton.isDisplayed());
+            	 Assert.assertFalse(addClassButton.isDisplayed(), "Button is displayed  ");
             	
             	 
              }
@@ -197,7 +202,7 @@ public class Class1
                if (!celltext.isEmpty())
                {
                WebElement editIcon = row.findElement(By.xpath("//editbutton]"));
-               Assert.assertTrue("Edit button is displayed ",editIcon.isDisplayed());
+               Assert.assertTrue(editIcon.isDisplayed(),"Edit button is displayed ");
                }
               }
              }
@@ -212,7 +217,7 @@ public class Class1
                if (celltext.isEmpty()) 
                {
                WebElement editIcon = row.findElement(By.xpath("//editbutton]"));
-              Assert.assertFalse("Edit button is not displayed ",editIcon.isEnabled());
+              Assert.assertFalse(editIcon.isEnabled(),"Edit button is not displayed ");
                }     
              }
              }
@@ -227,7 +232,7 @@ public class Class1
               if (!celltext.isEmpty()) 
               {
             WebElement deleteIcon = row.findElement(By.xpath("//deletebutton']"));
-            Assert.assertTrue("Edit icon is displayed ",deleteIcon.isDisplayed());
+            Assert.assertTrue(deleteIcon.isDisplayed(),"Edit icon is displayed ");
             	        }
             	    }
              }
@@ -242,7 +247,7 @@ public class Class1
                   if (!celltext.isEmpty()) 
                   {
                   WebElement deleteIcon = row.findElement(By.xpath("//deletebutton']"));
-                  Assert.assertFalse("Edit icon is displayed ",deleteIcon.isDisplayed());
+                  Assert.assertFalse(deleteIcon.isDisplayed(),"Edit icon is displayed ");
                   }
                   }
                 } 
@@ -253,7 +258,7 @@ public class Class1
             	        String columnText = columnheader.getText();
             	        if (!columnText.contains("Edit") && !columnText.contains("Delete")) {
             	            WebElement sortIcon = columnheader.findElement(By.xpath("//span[@class='sort-icon']"));
-            	            Assert.assertTrue("Sort icon is displayed", sortIcon.isDisplayed());
+            	            Assert.assertTrue(sortIcon.isDisplayed(), "Sort icon is displayed");
             	        } else {
             	            LoggerLoad.info("The Sort icon is not displayed");
             	        }
@@ -269,7 +274,7 @@ public class Class1
             	        if(!cellText.isEmpty())
             	        {
             	            WebElement checkbox = row.findElement(By.xpath("//button[@id='checkbox']"));
-            	            Assert.assertTrue("Checkbox is displayed", checkbox.isDisplayed());
+            	            Assert.assertTrue(checkbox.isDisplayed(), "Checkbox is displayed");
             	        }
             	    }
             	 
@@ -316,7 +321,7 @@ public class Class1
              
              {
             	 String Text = Dt.getText();
-                 Assert.assertFalse("Batchid is displayed ", Text.isEmpty());
+                 Assert.assertFalse(Text.isEmpty(), "Batchid is displayed ");
              }
              
              public void Invalidbatchid()
@@ -329,7 +334,7 @@ public class Class1
              public void emptyData()
              {
                  String Text = Dt.getText();
-                 Assert.assertTrue("Nothing exists ", Text.isEmpty());
+                 Assert.assertTrue(Text.isEmpty(), "Nothing exists ");
              }
              
              public void clasNo(){
@@ -338,7 +343,7 @@ public class Class1
                  SearchIcon.click();
              }
              public void ValidateclasNo(){
-             Assert.assertTrue("Entries with class no is displayed ", HeaderClassNo.isDisplayed());
+             Assert.assertTrue(HeaderClassNo.isDisplayed(), "Entries with class no is displayed ");
              }
              
              public void NoclasNo(){
@@ -357,7 +362,7 @@ public class Class1
              
              public void  displayclasTopic()
              {
-                 Assert.assertTrue("class topic is displayed ", HeaderClassTopic.isDisplayed());
+                 Assert.assertTrue(HeaderClassTopic.isDisplayed(), "class topic is displayed ");
              }
              
              public void NonclasTopic(){
@@ -375,7 +380,7 @@ public class Class1
              
              public void  displaystafId()
              {
-                 Assert.assertTrue("Staff Id is displayed ", HeaderClassTopic.isDisplayed());
+                 Assert.assertTrue(HeaderClassTopic.isDisplayed(), "Staff Id is displayed ");
              }
              
              public void NonstaffId()

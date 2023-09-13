@@ -219,31 +219,26 @@ public class Student {
 		Assert.assertEquals(x, "true");
 	}
 	
-	public boolean particularStudent()
-	{
-		List<WebElement> options= dropdown.findElements(By.xpath("//option[@classname='option']"));
-		for(WebElement e:options)
-		{
-			if (e.equals("Rama"))
-			{
-				return true;
-			}
-			else 
-				return false;
-		}
-		Assert.assertTrue(true);
-	
+	public boolean particularStudent() {
+	    List<WebElement> options = dropdown.findElements(By.xpath("//option[@classname='option']"));
+	    for (WebElement e : options) {
+	        if (e.getText().equals("Rama")) {
+	            return true;
+	        }
+	    }
+	    return false; // Return false if "Rama" is not found
 	}
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
+		
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
