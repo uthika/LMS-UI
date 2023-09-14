@@ -99,7 +99,7 @@ public class Login3Steps {
 		    loginPage3.clickSendLink();
 	 }
 
-	 @Then("Admin should not receive link in mail for reset username // password")
+	 @Then("Admin should not receive link in mail for reset username / password")
 	 public void admin_should_not_receive_link_in_mail_for_reset_username_password() {
 		 boolean linkNotReceived = loginPage3.resetLinknotreceived();
 	 }

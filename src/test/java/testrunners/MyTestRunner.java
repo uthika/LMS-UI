@@ -14,7 +14,7 @@ import io.cucumber.testng.CucumberOptions;
 		tags = " ",
 		plugin = {"pretty",
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-				"timeline:test-output-thread/","html:target/cucumber-reports.html","rerun:target/failed_scenarios"
+				"timeline:test-output-thread/","html:target/cucumber-reports.html"
 		},
 		monochrome=true
 		)
